@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <h2>Presented by Yash,Moin,Shashank</h2>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+<section class="image-1"> </section>
+<style>
+  .container {
+    position: relative;
+    font-family: Arial;
+  }
+  
+  .text-block {
+    position: absolute;
+    bottom: 200px;
+    right: 100px;
+    background-color: black;
+    color: white;
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+  </style>
+
+<body>
+ <div class="login">
+	<h1>Predict Crop Analysis</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="nitrogen" placeholder="Enter value of Nitrogen in percentage" required="required" />
+        <input type="text" name="phosphorus" placeholder="Enter value of Phosphorus in percentage" required="required" />
+		<input type="text" name="potassium" placeholder="Enter value of Potassium in percentage" required="required" />
+		<input type="text" name="temperature" placeholder="Enter value of Temperature in Celsius" required="required" />
+		<input type="text" name="humidity" placeholder="Enter value of Humidity in percentage" required="required" />
+		<input type="text" name="ph" placeholder="Enter value of pH" required="required" />
+		<input type="text" name="rainfall" placeholder="Enter value of Rainfall in cm" required="required" />
+		<input type="text" name="Water Level" placeholder="Enter Value for Water Level" required="required" >
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+ <div class="container">
+  <img src="img_nature_wide.jpg" alt="Nature" style="width:100%;">
+  <div class="text-block">
+    <h2>Ranges</h2>
+    <p>Nitrogen:0-100</p>
+    <p>Phosphorus:0-100</p>
+    <p>Potassium:0-100</p>
+    <p>Temperature:Any Value</p>
+    <p>Humidity:1-100</p>
+    <p>pH:0-14</p>
+    <p>Rainfall:0-300</p>
+  </div>
+
+
+</body>
+</html>
